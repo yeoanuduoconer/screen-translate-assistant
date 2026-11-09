@@ -49,25 +49,26 @@ private struct BrowserScreen: View {
             .padding(.horizontal, 14).padding(.vertical, 9)
             Divider()
             GeometryReader { geometry in
+                let size = geometry.size
+                let outline = draft ?? model.selection.rect(in: size)
                 ZStack(alignment: .topLeading) {
                     WebSurface(view: model.web)
                     if choosing {
                         Color.black.opacity(0.12)
                             .contentShape(Rectangle())
                             .gesture(DragGesture(minimumDistance: 5, coordinateSpace: .local)
-                                .onChanged { drag in draft = box(drag, in: geometry.size) }
+                                .onChanged { drag in draft = box(drag, in: size) }
                                 .onEnded { drag in
-                                    let rectangle = box(drag, in: geometry.size)
+                                    let rectangle = box(drag, in: size)
                                     if rectangle.width >= 24 && rectangle.height >= 24 {
-                                        model.updateSelection(Selection(rect: rectangle, size: geometry.size))
+                                        model.updateSelection(Selection(rect: rectangle, size: size))
                                         choosing = false
                                     }
                                     draft = nil
                                 })
-                        let box = draft ?? model.selection.rect(in: geometry.size)
                         RoundedRectangle(cornerRadius: 4).strokeBorder(.tint, lineWidth: 2)
-                            .frame(width: box.width, height: box.height)
-                            .offset(x: box.minX, y: box.minY)
+                            .frame(width: outline.width, height: outline.height)
+                            .offset(x: outline.minX, y: outline.minY)
                             .allowsHitTesting(false)
                     }
                 }
