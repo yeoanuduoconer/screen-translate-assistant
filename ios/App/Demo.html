@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Translation Preview</title>
+<style>
+  :root { color-scheme: light dark; font: 18px/1.6 system-ui, sans-serif; }
+  body { margin: 24px; }
+  p { margin: 28px 0; }
+  .spacer { height: 60vh; }
+</style>
+<h2>Translation Preview</h2>
+<p>Hello from the translation preview.</p>
+<p lang="ja">日本語の文字を認識します。</p>
+<p lang="zh-Hans">这是中文原文，默认不改动。</p>
+<button id="change" type="button">Show new text</button>
+<p id="dynamic"></p>
+<div class="spacer"></div>
+<p>The translation follows this paragraph.</p>
+<div class="spacer"></div>
+<script>
+document.getElementById("change").addEventListener("click", () => {
+  document.getElementById("dynamic").textContent = "This text appeared without a reload.";
+});
+</script>
+</html>

@@ -1,0 +1,22 @@
+name: Build unsigned iOS IPA
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unsigned-ipa:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and package iOS app
+        run: bash ios/scripts/build-ipa.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ScreenTranslate-unsigned
+          path: ios/build/ScreenTranslate-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 7

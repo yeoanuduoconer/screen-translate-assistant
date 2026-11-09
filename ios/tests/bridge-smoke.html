@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body { margin: 20px; color: #151515; background: #fcfaee; font: 18px/1.5 Arial, sans-serif; }
+#original { margin: 130px 0 0 24px; }
+#dynamic { margin-left: 24px; }
+#outside { position: absolute; left: 520px; top: 140px; }
+.spacer { height: 900px; }
+</style>
+<p id="original" lang="en">This sentence should move with its translation.</p>
+<p id="dynamic" lang="ja"></p>
+<p id="outside" lang="en">Out of range.</p>
+<div class="spacer"></div>
+<script src="../App/Bridge.js"></script>
+<script>
+window.addEventListener("load", async () => {
+  const api = screenTranslation, selection = { x: 0, y: 0, w: .6, h: .75 };
+  const layer = () => document.documentElement.querySelector(":scope > div[aria-hidden=true]");
+  const next = () => new Promise(resolve => setTimeout(resolve, 20));
+  const check = (value, message) => { if (!value) throw new Error(message); };
+  try {
+    const session = api.configure("dom", selection);
+    let scan = api.scan();
+    check(scan.items.length === 1 && scan.items[0].text === original.textContent, "selection");
+    check(api.accept(session, [{ original: original.textContent, lang: "en", translation: "译文和原文一起滚动。" }]), "accept");
+    const label = layer().firstElementChild;
+    check(label && label.textContent === "译文和原文一起滚动。", "overlay text");
+    const range = document.createRange();
+    range.selectNodeContents(original.firstChild);
+    const offset = () => Math.abs(label.getBoundingClientRect().left - range.getBoundingClientRect().left);
+    check(offset() < 1, "left alignment");
+    check(getComputedStyle(label).backgroundColor === "rgb(252, 250, 238)", "local background");
+    const initialY = label.getBoundingClientRect().top;
+    window.scrollTo(0, 70);
+    check(Math.abs(label.getBoundingClientRect().top - initialY + 70) < 1, "native page scroll");
+    await next();
+    scan = api.scan();
+    check(!scan.items.some(item => item.text === original.textContent), "translation stays cached after scroll");
+    dynamic.textContent = "新しい文章が表示されます。";
+    await next();
+    scan = api.scan();
+    check(scan.changed && scan.items.some(item => item.text === dynamic.textContent && item.lang === "ja"), "dynamic text");
+    original.textContent = "Different source text now.";
+    await next();
+    api.scan();
+    check(!layer().textContent.includes("译文和原文"), "stale text cleared");
+    api.configure("off", selection);
+    check(!layer().childElementCount, "original toggle clears the overlay");
+    api.configure("dom", selection);
+    check(!api.accept(session, []), "reject results from the previous language or selection");
+    api.configure("ocr", selection);
+    const stamp = api.metrics();
+    const ocrLine = { x: 50, y: 70, w: 170, h: 20, text: "图片译文", color: "#111", background: "#fff" };
+    check(api.applyOCR(stamp, [ocrLine]) && layer().textContent === "图片译文", "OCR overlay");
+    dispatchEvent(new Event("scroll"));
+    check(!api.applyOCR(stamp, [ocrLine]) && !layer().childElementCount, "reject stale OCR");
+    document.body.dataset.smokeResult = "passed";
+  } catch (error) {
+    document.body.dataset.smokeResult = "failed: " + error.message;
+  }
+});
+</script>

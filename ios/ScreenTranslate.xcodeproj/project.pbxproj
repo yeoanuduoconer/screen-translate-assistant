@@ -1,0 +1,144 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+		AA0000000000000000000001 = {
+			isa = PBXProject;
+			attributes = { LastSwiftUpdateCheck = 1500; LastUpgradeCheck = 1500; };
+			buildConfigurationList = AA0000000000000000000002;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (en, Base);
+			mainGroup = AA0000000000000000000003;
+			productRefGroup = AA0000000000000000000004;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (AA0000000000000000000005);
+		};
+		AA0000000000000000000002 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (AA0000000000000000000011, AA0000000000000000000012);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000000000000000000003 = {
+			isa = PBXGroup;
+			children = (AA0000000000000000000006, AA0000000000000000000004);
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000004 = {
+			isa = PBXGroup;
+			children = (AA0000000000000000000007);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000005 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0000000000000000000008;
+			buildPhases = (AA0000000000000000000009, AA000000000000000000000A, AA000000000000000000000B);
+			buildRules = ();
+			dependencies = ();
+			name = ScreenTranslate;
+			productName = ScreenTranslate;
+			productReference = AA0000000000000000000007;
+			productType = "com.apple.product-type.application";
+		};
+		AA0000000000000000000006 = {
+			isa = PBXGroup;
+			children = (AA0000000000000000000021, AA0000000000000000000022, AA0000000000000000000023,
+				AA0000000000000000000024, AA0000000000000000000025);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AA0000000000000000000007 = { isa = PBXFileReference; explicitFileType = wrapper.application;
+			includeInIndex = 0; path = ScreenTranslate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0000000000000000000008 = {
+			isa = XCConfigurationList;
+			buildConfigurations = (AA0000000000000000000013, AA0000000000000000000014);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0000000000000000000009 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (AA0000000000000000000031, AA0000000000000000000032, AA0000000000000000000033);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000000000000000000000A = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = ();
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA000000000000000000000B = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (AA0000000000000000000034, AA0000000000000000000035);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0000000000000000000011 = {
+			isa = XCBuildConfiguration;
+			name = Debug;
+			buildSettings = { CLANG_ENABLE_MODULES = YES; SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; };
+		};
+		AA0000000000000000000012 = {
+			isa = XCBuildConfiguration;
+			name = Release;
+			buildSettings = { CLANG_ENABLE_MODULES = YES; SDKROOT = iphoneos; IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SWIFT_VERSION = 5.0; SWIFT_OPTIMIZATION_LEVEL = "-O"; SWIFT_COMPILATION_MODE = wholemodule; };
+		};
+		AA0000000000000000000013 = {
+			isa = XCBuildConfiguration;
+			name = Debug;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = ScreenTranslate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeoanuduoconer.screentranslate;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "屏幕翻译";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 0.1.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+			};
+		};
+		AA0000000000000000000014 = {
+			isa = XCBuildConfiguration;
+			name = Release;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = ScreenTranslate;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeoanuduoconer.screentranslate;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "屏幕翻译";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				CURRENT_PROJECT_VERSION = 1;
+				MARKETING_VERSION = 0.1.0;
+				LD_RUNPATH_SEARCH_PATHS = ("$(inherited)", "@executable_path/Frameworks");
+			};
+		};
+		AA0000000000000000000021 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTranslateApp.swift; sourceTree = "<group>"; };
+		AA0000000000000000000022 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserModel.swift; sourceTree = "<group>"; };
+		AA0000000000000000000023 = { isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		AA0000000000000000000024 = { isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Bridge.js; sourceTree = "<group>"; };
+		AA0000000000000000000025 = { isa = PBXFileReference; lastKnownFileType = text.html; path = Demo.html; sourceTree = "<group>"; };
+		AA0000000000000000000031 = { isa = PBXBuildFile; fileRef = AA0000000000000000000021; };
+		AA0000000000000000000032 = { isa = PBXBuildFile; fileRef = AA0000000000000000000022; };
+		AA0000000000000000000033 = { isa = PBXBuildFile; fileRef = AA0000000000000000000023; };
+		AA0000000000000000000034 = { isa = PBXBuildFile; fileRef = AA0000000000000000000024; };
+		AA0000000000000000000035 = { isa = PBXBuildFile; fileRef = AA0000000000000000000025; };
+	};
+	rootObject = AA0000000000000000000001;
+}
