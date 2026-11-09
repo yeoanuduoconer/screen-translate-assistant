@@ -1,0 +1,2 @@
+# Run from the repository root inside a Python 3.11 virtual environment.
+-e .[fast-ocr]
